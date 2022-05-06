@@ -22,7 +22,7 @@ import accounts from "./accounts.json";
 
 dotenv.config();
 
-const numAccounts = 100;
+const numAccounts = 10;
 
 const useLiveVersionEnv = (process.env.USE_LIVE_VERSION ?? "false").toLowerCase();
 const useLiveVersion = !["false", "no", "0"].includes(useLiveVersionEnv);
@@ -104,7 +104,10 @@ const config: HardhatUserConfig = {
       // Let Ethers throw instead of Buidler EVM
       // This is closer to what will happen in production
       throwOnCallFailures: false,
-      throwOnTransactionFailures: false
+      throwOnTransactionFailures: false,
+      mining: {
+        interval: 1
+      }
     },
 
     dev: {
