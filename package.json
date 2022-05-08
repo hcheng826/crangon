@@ -88,8 +88,12 @@
     "test-live:lib-ethers": "yarn workspace @liquity/lib-ethers test-live",
     "coverage": "run-s coverage:*",
     "coverage:contracts": "yarn workspace @liquity/contracts coverage",
-    "start-hardhat-fork": "yarn workspace @liquity/lib-ethers hardhat node --fork https://bsc-dataseed.binance.org/",
-    "deploy-hardhat-fork": "DEPLOYER_PRIVATE_KEY=0x60ddfe7f579ab6867cbe7a2dc03853dc141d7a4ab6dbefc0dae2d2b1bd4e487f run-s start-dev-chain:prepare-providers start-dev-chain:deploy-contracts start-dev-chain:prepare-lib-ethers"
+    "start-bsc-fork-network": "yarn workspace @liquity/lib-ethers hardhat node --fork https://bsc-dataseed.binance.org/",
+    "bsc-fork": "run-s bsc-fork:*",
+    "bsc-fork:prepare-providers": "yarn prepare:providers",
+    "bsc-fork:deploy-contracts": "DEPLOYER_PRIVATE_KEY=0x60ddfe7f579ab6867cbe7a2dc03853dc141d7a4ab6dbefc0dae2d2b1bd4e487f yarn deploy --network dev --gas-price 20",
+    "bsc-fork:prepare-lib-ethers": "yarn prepare:lib-ethers",
+    "deploy-add-param": "DEPLOYER_PRIVATE_KEY=0x60ddfe7f579ab6867cbe7a2dc03853dc141d7a4ab6dbefc0dae2d2b1bd4e487f yarn deploy --network dev --gas-price 20 --use-real-price-feed true --create-uniswap-pair true"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
