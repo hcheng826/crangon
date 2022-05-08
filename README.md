@@ -2,11 +2,11 @@
 ## Fork it on hardhat fork mode from BSC
 start local fork mode
 ```
-yarn start-hardhat-fork
+yarn start-bsc-fork-network
 ```
 open a new terminal and deploy the contract
 ```
-yarn deploy-hardhat-fork
+yarn bsc-fork
 ```
 start a local front-end to interact with the deployed contract
 ```
