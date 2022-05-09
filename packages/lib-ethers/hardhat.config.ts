@@ -77,6 +77,12 @@ const oracleAddresses = {
   kovan: {
     chainlink: "0x9326BFA02ADD2366b30bacB125260Af641031331",
     tellor: "0x20374E579832859f180536A69093A126Db1c8aE9" // Playground
+  },
+  bsc: {
+    chainlink: "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE",
+  },
+  bsctestnet: {
+    chainlink: ""
   }
 };
 
