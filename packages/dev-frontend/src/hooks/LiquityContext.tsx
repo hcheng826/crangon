@@ -29,12 +29,18 @@ type LiquityProviderProps = {
   unsupportedMainnetFallback?: React.ReactNode;
 };
 
-const wsParams = (network: string, infuraApiKey: string): [string, string] => [
-  `wss://${network === "homestead" ? "mainnet" : network}.infura.io/ws/v3/${infuraApiKey}`,
-  network
-];
+const wsParams = (network: string, infuraApiKey: string): [string, string] => {
+  if (network === "bsctestnet") {
+    return ["wss://testnet-dex.binance.org/api/", network];
+  }
 
-const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli"];
+  return [
+    `wss://${network === "homestead" ? "mainnet" : network}.infura.io/ws/v3/${infuraApiKey}`,
+    network
+  ];
+};
+
+const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli", "bsctestnet"];
 
 const getClientVersion = async (provider: BaseProvider): Promise<string | undefined> => {
   try {
@@ -63,7 +69,9 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
           frontendTag: config.frontendTag,
           useStore: "blockPolled"
         });
-      } catch {}
+      } catch(e) {
+        console.log("error: ", e);
+      }
     }
   }, [config, provider, account, chainId]);
 
