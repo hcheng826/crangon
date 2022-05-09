@@ -77,6 +77,14 @@ const oracleAddresses = {
   kovan: {
     chainlink: "0x9326BFA02ADD2366b30bacB125260Af641031331",
     tellor: "0x20374E579832859f180536A69093A126Db1c8aE9" // Playground
+  },
+  bsc: {
+    chainlink: "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE",
+    tellor: ""
+  },
+  bsctestnet: {
+    chainlink: "",
+    tellor: ""
   }
 };
 
@@ -88,7 +96,9 @@ const wethAddresses = {
   ropsten: "0xc778417E063141139Fce010982780140Aa0cD5Ab",
   rinkeby: "0xc778417E063141139Fce010982780140Aa0cD5Ab",
   goerli: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
-  kovan: "0xd0A1E359811322d97991E03f863a0C30C2cF029C"
+  kovan: "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
+  bsc: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  bsctestnet: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd"
 };
 
 const hasWETH = (network: string): network is keyof typeof wethAddresses => network in wethAddresses;
@@ -123,6 +133,16 @@ const config: HardhatUserConfig = {
 
     kiln: {
       url: "https://rpc.kiln.themerge.dev",
+      accounts: [deployerAccount]
+    },
+
+    bsc: {
+      url: "https://bsc-dataseed.binance.org/",
+      accounts: [deployerAccount]
+    },
+
+    bsctestnet: {
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
       accounts: [deployerAccount]
     }
   },
