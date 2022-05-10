@@ -5,7 +5,8 @@ import { Decimal } from "@liquity/lib-base";
 
 import devOrNull from "../deployments/dev.json";
 import goerli from "../deployments/goerli.json";
-import kovan from "../deployments/kovan.json";
+// import kovan from "../deployments/kovan.json";
+import kovan from "../deployments/test/kovan.json";
 import rinkeby from "../deployments/rinkeby.json";
 import ropsten from "../deployments/ropsten.json";
 import mainnet from "../deployments/mainnet.json";

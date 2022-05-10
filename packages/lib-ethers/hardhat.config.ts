@@ -15,7 +15,7 @@ import "@nomiclabs/hardhat-ethers";
 
 import { Decimal } from "@liquity/lib-base";
 
-import { deployAndSetupContracts, deployTellorCaller, setSilent } from "./utils/deploy";
+import { deployAndSetupContracts, setSilent } from "./utils/deploy";
 import { _connectToContracts, _LiquityDeploymentJSON, _priceFeedIsTestnet } from "./src/contracts";
 
 import accounts from "./accounts.json";
@@ -83,6 +83,9 @@ const oracleAddresses = {
   },
   bsctestnet: {
     chainlink: "0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526",
+  },
+  dev: {
+    chainlink: "0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526", // mock
   }
 };
 
@@ -102,6 +105,13 @@ const wethAddresses = {
 const hasWETH = (network: string): network is keyof typeof wethAddresses => network in wethAddresses;
 
 const config: HardhatUserConfig = {
+  solidity: {
+    compilers: [
+      {
+        version: "0.6.11"
+      }
+    ]
+  },
   networks: {
     hardhat: {
       accounts: accounts.slice(0, numAccounts),
@@ -247,18 +257,18 @@ task("deploy", "Deploys the contracts to the network")
         assert(!_priceFeedIsTestnet(contracts.priceFeed));
 
         if (hasOracles(env.network.name)) {
-          const tellorCallerAddress = await deployTellorCaller(
-            deployer,
-            getContractFactory(env),
-            oracleAddresses[env.network.name].tellor,
-            overrides
-          );
+          // const tellorCallerAddress = await deployTellorCaller(
+          //   deployer,
+          //   getContractFactory(env),
+          //   oracleAddresses[env.network.name].tellor,
+          //   overrides
+          // );
 
           console.log(`Hooking up PriceFeed with oracles ...`);
 
           const tx = await contracts.priceFeed.setAddresses(
             oracleAddresses[env.network.name].chainlink,
-            tellorCallerAddress,
+            // tellorCallerAddress,
             overrides
           );
 
