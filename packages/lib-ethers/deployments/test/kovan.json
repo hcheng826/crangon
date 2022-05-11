@@ -1,0 +1,32 @@
+{
+  "chainId": 42,
+  "version": "a1eb4b4664e128923d8e2cda984912c63aca1c04",
+  "deploymentDate": 1652168428000,
+  "bootstrapPeriod": 1209600,
+  "totalStabilityPoolLQTYReward": "32000000",
+  "liquidityMiningLQTYRewardRate": "0.257201646090534979",
+  "_priceFeedIsTestnet": false,
+  "_uniTokenIsMock": true,
+  "_isDev": false,
+  "startBlock": 31523171,
+  "addresses": {
+    "activePool": "0xa80c4C34f54bfc40E063771e77974F9fAb0cD412",
+    "borrowerOperations": "0x6d6122eBD37C5E4bB6BAF8aD1Ff8Cb80d14dB40b",
+    "troveManager": "0xb39C47bB6347B9cc6616C253852c4C0C1181944F",
+    "collSurplusPool": "0x707BB1Bd1768692706591528bE61F843479EAaba",
+    "communityIssuance": "0xbDfa6Bf424EAa0BF8E8e54F5633f43a1dC5799e7",
+    "defaultPool": "0x3AF42f19910C124a5F9eF00b7F0E4bE26eB5627c",
+    "hintHelpers": "0xb76694F03B9aa95E468d7032b9Fe995D154458A7",
+    "lockupContractFactory": "0x3EBE77F78eAF194DdCfc31cf19752cf6945E232f",
+    "lqtyStaking": "0x51BE1D7cA6655c1ECAc1697eee14E704189D4013",
+    "priceFeed": "0xA28E4BE83140C4fB13270eA189ebF99e6Bd481C6",
+    "sortedTroves": "0xf816BF8adbd99Cd18E63e34Fa22E047363631DdF",
+    "stabilityPool": "0xa7135CaE6bD89Cb14b143741690a9F25764256da",
+    "gasPool": "0xA3D685250F3810b5B0FADf16C342C41e390F44f0",
+    "unipool": "0xBE69Fb7CC675D20185f91dE7c0f74713E3E6Fee5",
+    "lusdToken": "0xf17222966cA52f9f214674481D95Cdf0c64D821F",
+    "lqtyToken": "0x29381fcC748E3Db75c8C536d9B724831c403d7e8",
+    "multiTroveGetter": "0x7FBc495b3ACf907a22677b8589Bf719705f666c7",
+    "uniToken": "0x67F9f43D6Cc92C1Ff7AF3e92e9d0CDd9d22b8019"
+  }
+}
