@@ -19,4 +19,9 @@ Things to note:
 - Change everything related to uniswap to pancakeswap
 - Customize LUSD and LQTY to a BSC version
 
+deploy to BSC testnet to use real price feed on BNB
+```
+yarn deploy --network bsctestnet --use-real-price-feed true
+```
+
 ## README from original Repo: https://github.com/liquity/dev/blob/main/README.md
