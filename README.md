@@ -29,21 +29,26 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 
 ## Contract Q&A (find the code implementation)
 ### How does LUSD maintain peg?
+- Up force
+    - User can use 1 LUSD to make redemption and get 1 USD-valued ETH (reduce the LUSD in circulation) (redemption method: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L925).
 
-Up force
-- User can use 1 LUSD to make redemption and get 1 USD-valued ETH (reduce the LUSD in circulation) (TODO: find the redemption code).
-
-Down force
-- If LUSD price > 1.1, User can open a trove with 110% CR, sell the minted LUSD, and just don't repay.
+- Down force
+    - If LUSD price > 1.1, User can open a trove with 110% CR, sell the minted LUSD, and just don't repay the debt. (increase LUSD in circulation)
 ### How does it check the condition for liquidataion?
+- Normal mode: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L767
+- Recovery mode: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L716, https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L736
 ### How does it check min debt?
-https://github.com/hcheng826/liquity-fork/blob/main/packages/contracts/contracts/BorrowerOperations.sol#L173
+https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L173
 ### How is LQTY minted and distributed?
 
+### Where does this `total` come from?
+https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L731
+(guess it's a default empty struct?)
+
 ## Design pattern/practice
-- Contract cache? https://github.com/hcheng826/liquity-fork/blob/main/packages/contracts/contracts/TroveManager.sol#L646
+- Contract cache? https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/TroveManager.sol#L646
 - Write the deployed addresses to a json file
-- Use setAddress function to set up all the dependencies (connect all together) after deploying all the contracts https://github.com/hcheng826/liquity-fork/blob/main/packages/contracts/contracts/BorrowerOperations.sol#L98
+- Use setAddress function to set up all the dependencies (connect all together) after deploying all the contracts https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L98
 - BaseContract setting up all the constants
 
 
