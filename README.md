@@ -29,8 +29,10 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 
 ## Contract Q&A (find the code implementation)
 ### How does LUSD maintain peg?
+
 Up force
 - User can use 1 LUSD to make redemption and get 1 USD-valued ETH (reduce the LUSD in circulation) (TODO: find the redemption code).
+
 Down force
 - If LUSD price > 1.1, User can open a trove with 110% CR, sell the minted LUSD, and just don't repay.
 ### How does it check the condition for liquidataion?
