@@ -24,45 +24,50 @@ deploy to BSC testnet to use real price feed on BNB
 yarn deploy --network bsctestnet --use-real-price-feed true
 ```
 
-## Customization ideas/questions
-- Lower the threshold of minimum 1800 LUSD debt to open a trove: https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31
-- Change the gas compensation for liquidation reward of 200 LUSD: https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28
+## Forking customization ideas/questions
+- Lower the threshold of minimum 1800 LUSD debt to open a trove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31)
+- Change the gas compensation for liquidation reward of 200 LUSD: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28)
 - Change the basefee for redemption and borrowing.
-    - redemption min and max (0.5%, 5%): https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L47-L48
-    - borrowing (0.5%): https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L36
-- lockup and vested schedule
+    - redemption min and max (0.5%, 5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L47-L48)
+    - borrowing (0.5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L36)
+- lockup and vested schedule (currently 1 year): [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/LQTY/LockupContractFactory.sol#L32)
+- 14-day block for redemption after launching: [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/TroveManager.sol#L51)
+- launch sequence vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
+- launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
 
 ## Contract Q&A (find the code implementation)
 ### How does LUSD maintain peg?
 - Up force (price floor)
-    - User can use 1 LUSD to make redemption and get 1 USD-valued ETH (reduce the LUSD in circulation) (redemption method: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L925).
+    - User can use 1 LUSD to make redemption and get 1 USD-valued ETH (reduce the LUSD in circulation) (redemption method: [code ref](https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L925)).
 
 - Down force
     - If LUSD price > 1.1, User can open a trove with 110% CR, sell the minted LUSD, and just don't repay the debt. (increase LUSD in circulation)
 ### How does it check the condition for liquidataion?
-- Normal mode: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L767
-- Recovery mode: https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L716, https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L736
+- Normal mode: [code ref](https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L767)
+- Recovery mode: [code ref1](https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L716), [code ref2](https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L736)
 ### How does it check min debt?
-https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L173
+[code ref](https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L173)
 ### How is LQTY minted and distributed?
-- frontend incentives?
+- [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/LQTY/LQTYToken.sol#L138-L154)
+- https://github.com/liquity/dev/blob/main/README.md#launch-sequence-and-vesting-process
 
 ### What are the fees?
-- redemption fee: when LUSD holder redempt ETH with LUSD, a cut of the ETH is given to the LQTY staking pool. (https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L1006)
+- redemption fee: when LUSD holder redempt ETH with LUSD, a cut of the ETH is given to the LQTY staking pool. ([code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L1006))
 - debt issuance: when borrower mint more LUSD with their trove, a cut of the LUSD is given to the LQTY staking pool.
-    - openTrove: https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/BorrowerOperations.sol#L170
-    - adjustTrove: https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/BorrowerOperations.sol#L276
+    - openTrove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/BorrowerOperations.sol#L170)
+    - adjustTrove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/BorrowerOperations.sol#L276)
 
 ### Where does this `total` come from?
-https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L731
+[code ref](https://github.com/hcheng826/liquity-fork/blob/d65f27d6c20ba1f66f23ebaeed0135ad4e718138/packages/contracts/contracts/TroveManager.sol#L731)
 (guess it's a default empty struct?)
 
 ### What is `hint` used in the contracts?
+- used for inserting the trove to the sorted list.
 
 ## Design pattern/practice
-- Contract cache? https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/TroveManager.sol#L646
+- Contract cache? [code ref](https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/TroveManager.sol#L646)
 - Write the deployed addresses to a json file
-- Use setAddress function to set up all the dependencies (connect all together) after deploying all the contracts https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L98
+- Use setAddress function to set up all the dependencies (connect all together) after deploying all the contracts [code ref](https://github.com/hcheng826/liquity-fork/blob/6dbfd73baefdcac49d20b50a4c1c9a8c1c4afdf9/packages/contracts/contracts/BorrowerOperations.sol#L98)
 - BaseContract setting up all the constants
 
 
