@@ -24,16 +24,20 @@ deploy to BSC testnet to use real price feed on BNB
 yarn deploy --network bsctestnet --use-real-price-feed true
 ```
 
-## Forking customization ideas/questions
-- Lower the threshold of minimum 1800 LUSD debt to open a trove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31)
-- Change the gas compensation for liquidation reward of 200 LUSD: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28)
-- Change the basefee for redemption and borrowing.
-    - redemption min and max (0.5%, 5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L47-L48)
-    - borrowing (0.5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L36)
-- lockup and vested schedule (currently 1 year): [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/LQTY/LockupContractFactory.sol#L32)
-- 14-day block for redemption after launching: [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/TroveManager.sol#L51)
-- launch sequence vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
-- launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
+## Forking customization focus
+- Launch sequence and vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
+- Tokenmatics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
+- Interaction with Pancakeswap
+    - Admin creates a pool in Pancakeswap and deploy `Unipool` (LP reward contract), which knows the adress of the pool. LQTY will be minted to the `Unipool` contract.
+- Arguments to consider changing
+    - Threshold of minimum 1800 LUSD debt to open a trove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31)
+    - Gas compensation for liquidation reward of 200 LUSD: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28)
+    - Basefee for redemption and borrowing:
+        - redemption min and max (0.5%, 5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L47-L48)
+        - borrowing (0.5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L36)
+        - more details about fee calculation: [doc ref](https://github.com/liquity/dev#liquity-system-fees)
+    - Lockup time of 1 year: [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/LQTY/LockupContractFactory.sol#L32)
+    - 14-day block for redemption after launching: [code ref](https://github.com/hcheng826/liquity-fork/blob/3f1aa7b7f0bc319d71774ffd35a3edd47631be91/packages/contracts/contracts/TroveManager.sol#L51)
 
 ## Contract Q&A (find the code implementation)
 ### How does LUSD maintain peg?
