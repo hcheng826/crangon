@@ -25,8 +25,9 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 ```
 
 ## Forking customization focus
+- Tokenomics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
 - Launch sequence and vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
-- Tokenmatics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
+    - We can directly follow this with the slight modifications below.
 - Interaction with Pancakeswap
     - Admin creates a pool in Pancakeswap and deploy `Unipool` (LP reward contract), which knows the adress of the pool. LQTY will be minted to the `Unipool` contract.
 - Arguments to consider changing
