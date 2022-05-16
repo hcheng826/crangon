@@ -13,11 +13,16 @@ const factoryAbi = [
   "event PairCreated(address indexed token0, address indexed token1, address pair, uint)"
 ];
 
-const factoryAddress = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
+// BSC chain id: 56
+// BSC testnet chain id: 97
+const factoryAddress = {
+  56: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
+  97: "0x6725F303b657a9451d8BA641348b6761A6CC7a17"
+}
 
-const hasFactory = (chainId: number) => [1, 3, 4, 5, 42].includes(chainId);
+const hasFactory = (chainId: number) => [1, 3, 4, 5, 42, 56, 97].includes(chainId);
 
-interface UniswapV2Factory
+interface PancakeswapV2Factory
   extends _TypedLiquityContract<
     unknown,
     { createPair(tokenA: string, tokenB: string, _overrides?: Overrides): Promise<string> }
@@ -28,7 +33,7 @@ interface UniswapV2Factory
   ): _TypedLogDescription<{ token0: string; token1: string; pair: string }>[];
 }
 
-export const createUniswapV2Pair = async (
+export const createPancakeswapV2Pair = async (
   signer: Signer,
   tokenA: string,
   tokenB: string,
@@ -37,16 +42,16 @@ export const createUniswapV2Pair = async (
   const chainId = await signer.getChainId();
 
   if (!hasFactory(chainId)) {
-    throw new Error(`UniswapV2Factory is not deployed on this network (chainId = ${chainId})`);
+    throw new Error(`PancakeswapV2Factory is not deployed on this network (chainId = ${chainId})`);
   }
 
   const factory = (new _LiquityContract(
-    factoryAddress,
+    factoryAddress[chainId as keyof typeof factoryAddress],
     factoryAbi,
     signer
-  ) as unknown) as UniswapV2Factory;
+  ) as unknown) as PancakeswapV2Factory;
 
-  log(`Creating Uniswap v2 WETH <=> LUSD pair...`);
+  log(`Creating Pancakeswap v2 WETH <=> LUSD pair...`);
 
   const tx = await factory.createPair(tokenA, tokenB, { ...overrides });
   const receipt = await tx.wait();
