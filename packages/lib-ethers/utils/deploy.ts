@@ -12,6 +12,7 @@ import {
 } from "../src/contracts";
 
 import { createUniswapV2Pair } from "./UniswapV2Factory";
+import { createPancakeswapV2Pair } from "./PancakeswapV2Factory";
 
 let silent = true;
 
@@ -347,7 +348,9 @@ export const deployAndSetupContracts = async (
           ...addresses,
 
           uniToken: await (wethAddress
-            ? createUniswapV2Pair(deployer, wethAddress, addresses.lusdToken, overrides)
+            ? ( [56, 97].includes(await deployer.getChainId()) ?
+              createPancakeswapV2Pair(deployer, wethAddress, addresses.lusdToken, overrides)
+              : createUniswapV2Pair(deployer, wethAddress, addresses.lusdToken, overrides) )
             : deployMockUniToken(deployer, getContractFactory, overrides))
         }
       })
