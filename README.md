@@ -29,15 +29,15 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 - Forking project name?
 - Stablecoin name (LUSD)?
 - Secondary token name (LQTY)?
-### Tokenomics
-- Tokenomics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
-- Launch sequence and vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
-    - We can directly follow this with the modifications on arguemnts below.
-- How to prepare the multisig account for 1. Bug bounty and 2. Team lockup account
-### Others
-- Interaction with Pancakeswap
-    - Admin creates a pool in Pancakeswap and deploy `Unipool` (LP reward contract), which knows the adress of the pool. LQTY will be minted to the `Unipool` contract.
-### Arguments
+### Tokenomics and Token Distribution
+- How to prepare the multisig account for 1. Bug bounty and 2. Team lockup account?
+- Should we follow the design of original Liquity?
+    - Tokenomics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
+    - Launch sequence and vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
+        - We can directly follow this with the modifications on parameters below.
+    - Relation with Pancakeswap
+        - Admin creates a pool in Pancakeswap and deploy `Unipool` (LP reward contract), which knows the adress of the pool. LQTY will be minted to the `Unipool` contract.
+### Custimizable Parameters
 - Threshold of minimum 1800 LUSD debt to open a trove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31)
 - Gas compensation for liquidation reward of 200 LUSD: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28)
 - Basefee for redemption and borrowing:
