@@ -26,9 +26,9 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 
 ## Forking customization focus
 ### Naming
-- Forking project name?
-- Stablecoin name (LUSD)?
-- Secondary token name (LQTY)?
+- Forking project name: Crangon
+- Stablecoin name (LUSD): CUSD
+- Secondary token name (LQTY): CGN
 ### Tokenomics and Token Distribution
 - How to prepare the multisig account for 1. Bug bounty and 2. Team lockup account?
 - Should we follow the design of original Liquity?
