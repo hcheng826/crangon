@@ -25,19 +25,19 @@ export const Inactive: React.FC = () => {
   return (
     <Card>
       <Heading>
-        Uniswap Liquidity Farm
+        PancakeSwap Liquidity Farm
         <Flex sx={{ justifyContent: "flex-end" }}>
           <RemainingLQTY />
         </Flex>
       </Heading>
       <Box sx={{ p: [2, 3] }}>
-        <InfoMessage title="You aren't farming LQTY.">
-          <Paragraph>You can farm LQTY by staking your Uniswap ETH/LUSD LP tokens.</Paragraph>
+        <InfoMessage title="You aren't farming CGN.">
+          <Paragraph>You can farm CGN by staking your Uniswap BNB/CUSD LP tokens.</Paragraph>
 
           <Paragraph sx={{ mt: 2 }}>
             You can obtain LP tokens by adding liquidity to the{" "}
             <Link href={uniLink(addresses["lusdToken"])} target="_blank">
-              ETH/LUSD pool on Uniswap. <Icon name="external-link-alt" size="xs" />
+            BNB/CUSD pool on PancakeSwap. <Icon name="external-link-alt" size="xs" />
             </Link>
           </Paragraph>
         </InfoMessage>
