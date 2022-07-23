@@ -9,9 +9,9 @@ import "../Interfaces/IDefaultPool.sol";
 import "../Interfaces/IPriceFeed.sol";
 import "../Interfaces/ILiquityBase.sol";
 
-/* 
+/*
 * Base contract for TroveManager, BorrowerOperations and StabilityPool. Contains global system constants and
-* common functions. 
+* common functions.
 */
 contract LiquityBase is BaseMath, ILiquityBase {
     using SafeMath for uint;
@@ -25,15 +25,15 @@ contract LiquityBase is BaseMath, ILiquityBase {
     uint constant public CCR = 1500000000000000000; // 150%
 
     // Amount of LUSD to be locked in gas pool on opening troves
-    uint constant public LUSD_GAS_COMPENSATION = 200e18;
+    uint constant public LUSD_GAS_COMPENSATION = 10e18;
 
     // Minimum amount of net LUSD debt a trove must have
-    uint constant public MIN_NET_DEBT = 1800e18;
-    // uint constant public MIN_NET_DEBT = 0; 
+    uint constant public MIN_NET_DEBT = 100e18;
+    // uint constant public MIN_NET_DEBT = 0;
 
     uint constant public PERCENT_DIVISOR = 200; // dividing by 200 yields 0.5%
 
-    uint constant public BORROWING_FEE_FLOOR = DECIMAL_PRECISION / 1000 * 5; // 0.5%
+    uint constant public BORROWING_FEE_FLOOR = DECIMAL_PRECISION / 1000 * 1; // 0.5%
 
     IActivePool public activePool;
 
