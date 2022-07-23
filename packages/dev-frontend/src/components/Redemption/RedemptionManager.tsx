@@ -60,7 +60,7 @@ export const RedemptionManager: React.FC = () => {
     ? [
         false,
         <ErrorDescription>
-          You can't redeem LUSD when the total collateral ratio is less than{" "}
+          You can't redeem CUSD when the total collateral ratio is less than{" "}
           <Amount>{mcrPercent}</Amount>. Please try again later.
         </ErrorDescription>
       ]
@@ -78,7 +78,7 @@ export const RedemptionManager: React.FC = () => {
     : [
         true,
         <ActionDescription>
-          You will receive <Amount>{ethAmount.sub(ethFee).prettify(4)} ETH</Amount> in exchange for{" "}
+          You will receive <Amount>{ethAmount.sub(ethFee).prettify(4)} BNB</Amount> in exchange for{" "}
           <Amount>
             {lusdAmount.prettify()} {COIN}
           </Amount>
@@ -119,13 +119,13 @@ export const RedemptionManager: React.FC = () => {
           inputId="redeem-fee"
           amount={ethFee.toString(4)}
           pendingAmount={feePct.toString(2)}
-          unit="ETH"
+          unit="BNB"
           infoIcon={
             <InfoIcon
               tooltip={
                 <Card variant="tooltip" sx={{ minWidth: "240px" }}>
                   The Redemption Fee is charged as a percentage of the redeemed Ether. The Redemption
-                  Fee depends on LUSD redemption volumes and is 0.5% at minimum.
+                  Fee depends on CUSD redemption volumes and is 0.5% at minimum.
                 </Card>
               }
             />

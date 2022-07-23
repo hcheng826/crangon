@@ -37,7 +37,7 @@ export const Yield: React.FC = () => {
 
   if (hasZeroValue || lqtyPrice === undefined) return null;
 
-  const yearlyHalvingSchedule = 0.5; // 50% see LQTY distribution schedule for more info
+  const yearlyHalvingSchedule = 0.5; // 50% see CGN distribution schedule for more info
   const remainingLqtyOneYear = remainingStabilityPoolLQTYReward.mul(yearlyHalvingSchedule);
   const remainingLqtyOneYearInUSD = remainingLqtyOneYear.mul(lqtyPrice);
   const aprPercentage = remainingLqtyOneYearInUSD.div(lusdInStabilityPool).mul(100);
@@ -47,17 +47,17 @@ export const Yield: React.FC = () => {
 
   return (
     <Badge>
-      <Text>LQTY APR {aprPercentage.toString(2)}%</Text>
+      <Text>CGN APR {aprPercentage.toString(2)}%</Text>
       <InfoIcon
         tooltip={
           <Card variant="tooltip" sx={{ width: ["220px", "518px"] }}>
             <Paragraph>
-              An <Text sx={{ fontWeight: "bold" }}>estimate</Text> of the LQTY return on the LUSD
-              deposited to the Stability Pool over the next year, not including your ETH gains from
+              An <Text sx={{ fontWeight: "bold" }}>estimate</Text> of the CGN return on the CUSD
+              deposited to the Stability Pool over the next year, not including your BNB gains from
               liquidations.
             </Paragraph>
             <Paragraph sx={{ fontSize: "12px", fontFamily: "monospace", mt: 2 }}>
-              (($LQTY_REWARDS * YEARLY_DISTRIBUTION%) / DEPOSITED_LUSD) * 100 ={" "}
+              (($CGN_REWARDS * YEARLY_DISTRIBUTION%) / DEPOSITED_CUSD) * 100 ={" "}
               <Text sx={{ fontWeight: "bold" }}> APR</Text>
             </Paragraph>
             <Paragraph sx={{ fontSize: "12px", fontFamily: "monospace" }}>

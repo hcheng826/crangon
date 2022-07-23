@@ -1,4 +1,4 @@
-# BSC Fork Plan
+# Crangon
 ## Fork it on hardhat fork mode from BSC
 start local fork mode
 ```
@@ -29,10 +29,11 @@ yarn deploy --network bsctestnet --use-real-price-feed true
 - Forking project name: Crangon
 - Stablecoin name (LUSD): CUSD
 - Secondary token name (LQTY): CGN
+- Need logo for CGN and CUSD
 ### Tokenomics and Token Distribution
 - How to prepare the multisig account for 1. Bug bounty and 2. Team lockup account?
 - Should we follow the design of original Liquity?
-    - Tokenomics, Launch details: [medium article](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea)
+    - Tokenomics, Launch details: [Liquity](https://medium.com/liquity/liquity-launch-details-4537c5ffa9ea), [Yeti](https://blog.yetifinance.co/the-arrival-of-yetinomics-d93a78004c3b)
     - Launch sequence and vesting process: [doc ref](https://github.com/liquity/dev#launch-sequence-and-vesting-process)
         - We can directly follow this with the modifications on parameters below.
     - Relation with Pancakeswap
