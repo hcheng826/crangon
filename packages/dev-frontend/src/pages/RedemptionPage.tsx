@@ -6,8 +6,8 @@ import { InfoMessage } from "../components/InfoMessage";
 import { useLiquity } from "../hooks/LiquityContext";
 import { Icon } from "../components/Icon";
 
-const uniLink = (lusdAddress: string) =>
-  `https://app.uniswap.org/#/swap?inputCurrency=${lusdAddress}&outputCurrency=ETH`;
+const cakeLink = (lusdAddress: string) =>
+  `https://pancakeswap.finance/swap?inputCurrency=${lusdAddress}&outputCurrency=BNB`;
 
 export const RedemptionPage: React.FC = () => {
   const {
@@ -28,8 +28,8 @@ export const RedemptionPage: React.FC = () => {
               </Paragraph>
               <Paragraph sx={{ mt: 2 }}>
                 Most of the time you will get a better rate for converting CUSD to BNB on{" "}
-                <Link href={uniLink(addresses["lusdToken"])} target="_blank">
-                  Uniswap <Icon name="external-link-alt" size="xs" />
+                <Link href={cakeLink(addresses["lusdToken"])} target="_blank">
+                  Pancakeswap <Icon name="external-link-alt" size="xs" />
                 </Link>{" "}
                 or other exchanges.
               </Paragraph>
