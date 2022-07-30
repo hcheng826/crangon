@@ -1,4 +1,6 @@
 # Crangon
+Crangon is a fork of Liquity on BSC.
+App URL: https://crangon.web.app
 ## Fork it on hardhat fork mode from BSC
 start local fork mode
 ```
