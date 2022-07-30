@@ -43,7 +43,7 @@ export const Staking: React.FC = () => {
   return (
     <Card>
       <Heading>
-        Uniswap Liquidity Farm
+        Pancakeswap Liquidity Farm
         {isDirty && !isTransactionPending && (
           <Button
             variant="titleIcon"

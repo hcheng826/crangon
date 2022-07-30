@@ -7,7 +7,7 @@ import { useFarmView } from "../../context/FarmViewContext";
 import { RemainingLQTY } from "../RemainingLQTY";
 import { Yield } from "../Yield";
 
-const uniLink = (lusdAddress: string) => `https://app.uniswap.org/#/add/ETH/${lusdAddress}`;
+const cakeLink = (lusdAddress: string) => `https://pancakeswap.finance/add/BNB/${lusdAddress}`;
 
 export const Inactive: React.FC = () => {
   const { dispatchEvent } = useFarmView();
@@ -32,11 +32,11 @@ export const Inactive: React.FC = () => {
       </Heading>
       <Box sx={{ p: [2, 3] }}>
         <InfoMessage title="You aren't farming CGN.">
-          <Paragraph>You can farm CGN by staking your Uniswap BNB/CUSD LP tokens.</Paragraph>
+          <Paragraph>You can farm CGN by staking your Pancakeswap BNB/CUSD LP tokens.</Paragraph>
 
           <Paragraph sx={{ mt: 2 }}>
             You can obtain LP tokens by adding liquidity to the{" "}
-            <Link href={uniLink(addresses["lusdToken"])} target="_blank">
+            <Link href={cakeLink(addresses["lusdToken"])} target="_blank">
             BNB/CUSD pool on PancakeSwap. <Icon name="external-link-alt" size="xs" />
             </Link>
           </Paragraph>
