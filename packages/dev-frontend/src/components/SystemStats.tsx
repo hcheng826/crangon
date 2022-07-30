@@ -144,7 +144,7 @@ export const SystemStats: React.FC<SystemStatsProps> = ({ variant = "info", show
       </Statistic>
       {}
 
-      <Heading as="h2" sx={{ mt: 3, fontWeight: "body" }}>
+      {/* <Heading as="h2" sx={{ mt: 3, fontWeight: "body" }}>
         Frontend
       </Heading>
       {kickbackRatePct && (
@@ -169,7 +169,7 @@ export const SystemStats: React.FC<SystemStatsProps> = ({ variant = "info", show
             <GitHubCommit>{process.env.REACT_APP_VERSION}</GitHubCommit>
           )}
         </Box>
-      </Box>
+      </Box> */}
     </Card>
   );
 };

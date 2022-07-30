@@ -19,7 +19,7 @@ export const MINIMUM_COLLATERAL_RATIO = Decimal.from(1.1);
  *
  * @public
  */
-export const LUSD_LIQUIDATION_RESERVE = Decimal.from(200);
+export const LUSD_LIQUIDATION_RESERVE = Decimal.from(10);
 
 /**
  * A Trove must always have at least this much debt on top of the
@@ -30,7 +30,7 @@ export const LUSD_LIQUIDATION_RESERVE = Decimal.from(200);
  *
  * @public
  */
-export const LUSD_MINIMUM_NET_DEBT = Decimal.from(1800);
+export const LUSD_MINIMUM_NET_DEBT = Decimal.from(100);
 
 /**
  * A Trove must always have at least this much debt.
@@ -51,18 +51,18 @@ export const LUSD_MINIMUM_DEBT = LUSD_LIQUIDATION_RESERVE.add(LUSD_MINIMUM_NET_D
  *
  * @public
  */
-export const MINIMUM_BORROWING_RATE = Decimal.from(0.005);
+export const MINIMUM_BORROWING_RATE = Decimal.from(0.001);
 
 /**
  * Value that the {@link Fees.borrowingRate | borrowing rate} will never exceed.
  *
  * @public
  */
-export const MAXIMUM_BORROWING_RATE = Decimal.from(0.05);
+export const MAXIMUM_BORROWING_RATE = Decimal.from(0.03);
 
 /**
  * Value that the {@link Fees.redemptionRate | redemption rate} will never decay below.
  *
  * @public
  */
-export const MINIMUM_REDEMPTION_RATE = Decimal.from(0.005);
+export const MINIMUM_REDEMPTION_RATE = Decimal.from(0.001);
