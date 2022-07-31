@@ -23,7 +23,7 @@ Things to note:
 
 deploy to BSC testnet to use real price feed on BNB
 ```
-yarn deploy --network bsctestnet --use-real-price-feed true
+yarn deploy --network bsctestnet --use-real-price-feed true --create-uniswap-pair true
 ```
 
 ## Forking customization focus

@@ -51,7 +51,7 @@ export const createPancakeswapV2Pair = async (
     signer
   ) as unknown) as PancakeswapV2Factory;
 
-  log(`Creating Pancakeswap v2 WETH <=> LUSD pair...`);
+  log(`Creating Pancakeswap v2 WBNB <=> CUSD pair...`);
 
   const tx = await factory.createPair(tokenA, tokenB, { ...overrides });
   const receipt = await tx.wait();
