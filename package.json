@@ -47,7 +47,7 @@
     "docs": "run-s docs:*",
     "docs:collect-sdk-apis": "node scripts/collect-sdk-apis.js",
     "docs:api-documenter": "api-documenter generate -i temp/sdk-apis -o docs/sdk",
-    "firebase": "npm run prepare && npm run build:dev-frontend && firebase deploy",
+    "firebase": "yarn prepare && yarn build:dev-frontend && firebase deploy",
     "fuzzer": "yarn workspace @liquity/fuzzer fuzzer",
     "prepare": "run-s prepare:*",
     "prepare:contracts": "yarn workspace @liquity/contracts prepare",
