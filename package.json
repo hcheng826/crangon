@@ -90,7 +90,7 @@
     "coverage": "run-s coverage:*",
     "coverage:contracts": "yarn workspace @liquity/contracts coverage",
     "start-bsc-fork-network": "yarn workspace @liquity/lib-ethers hardhat node --fork https://bsc-dataseed.binance.org/",
-    "bsc-fork": "run-s bsc-fork:*",
+    "bsc-fork-deploy": "run-s bsc-fork:*",
     "bsc-fork:prepare-providers": "yarn prepare:providers",
     "bsc-fork:deploy-contracts": "DEPLOYER_PRIVATE_KEY=0x60ddfe7f579ab6867cbe7a2dc03853dc141d7a4ab6dbefc0dae2d2b1bd4e487f yarn deploy --network dev --gas-price 20",
     "bsc-fork:prepare-lib-ethers": "yarn prepare:lib-ethers",

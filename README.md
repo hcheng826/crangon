@@ -8,7 +8,7 @@ yarn start-bsc-fork-network
 ```
 open a new terminal and deploy the contract
 ```
-yarn bsc-fork
+yarn bsc-fork-deploy
 ```
 start a local front-end to interact with the deployed contract
 ```
