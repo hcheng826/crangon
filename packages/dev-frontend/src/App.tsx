@@ -89,10 +89,9 @@ const App = () => {
       }}
     >
       <Heading sx={{ mb: 3 }}>
-        <Icon name="exclamation-triangle" /> Liquity is not yet deployed to{" "}
-        {chainId === 1 ? "mainnet" : "this network"}.
+        <Icon name="exclamation-triangle" /> Crangon is not yet deployed to this network.
       </Heading>
-      Please switch to Ropsten, Rinkeby, Kovan, Görli, Kiln or BSC testnet.
+      Please switch to BSC mainnet or BSC testnet.
     </Flex>
   );
 
