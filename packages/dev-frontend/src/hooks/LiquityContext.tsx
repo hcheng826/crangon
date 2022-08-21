@@ -30,7 +30,11 @@ type LiquityProviderProps = {
 };
 
 const wsParams = (network: string, infuraApiKey: string): [string, string] => {
-  if (network === "bsctestnet") {
+  if (network === "bnb") {
+    return ["wss://dex.binance.org/api/", network];
+  }
+
+  if (network === "bnbt") {
     return ["wss://testnet-dex.binance.org/api/", network];
   }
 
@@ -40,7 +44,7 @@ const wsParams = (network: string, infuraApiKey: string): [string, string] => {
   ];
 };
 
-const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli", "bsctestnet"];
+const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli", "bnbt"];
 
 const getClientVersion = async (provider: BaseProvider): Promise<string | undefined> => {
   try {

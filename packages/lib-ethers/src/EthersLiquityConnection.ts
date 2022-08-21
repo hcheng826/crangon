@@ -11,7 +11,8 @@ import rinkeby from "../deployments/rinkeby.json";
 import ropsten from "../deployments/ropsten.json";
 import mainnet from "../deployments/mainnet.json";
 import kiln from "../deployments/kiln.json";
-import bsctestnet from "../deployments/default/bsctestnet.json";
+import bsctestnet from "../deployments/bsctestnet.json";
+import bscmainnet from "../deployments/bscmainnet.json";
 
 import { numberify, panic } from "./_utils";
 import { EthersProvider, EthersSigner } from "./types";
@@ -36,6 +37,7 @@ const deployments: {
   [goerli.chainId]: goerli,
   [kovan.chainId]: kovan,
   [kiln.chainId]: kiln,
+  [bscmainnet.chainId]: bscmainnet,
   [bsctestnet.chainId]: bsctestnet,
 
   ...(dev !== null ? { [dev.chainId]: dev } : {})
