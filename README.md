@@ -45,8 +45,9 @@ yarn deploy --network bsctestnet --use-real-price-feed true --create-uniswap-pai
 ### Custimizable Parameters
 - Threshold of minimum 1800 LUSD debt to open a trove: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L31)
     - change to 100 CUSD
-- Gas compensation for liquidation reward of 200 LUSD: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28)
+- Gas compensation for liquidation reward of 200 LUSD and 0.5% collateralized ETH: [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/Dependencies/LiquityBase.sol#L28, https://github.com/hcheng826/crangon/blob/main/packages/contracts/contracts/Dependencies/LiquityBase.sol#L57)
     - change to 10 CUSD
+    - 0.5% unchanged
 - Basefee for redemption and borrowing:
     - redemption min and max (0.5%, 5%): [code ref](https://github.com/hcheng826/liquity-fork/blob/b76a54fe758eb6ec1e298f79a236c8b43c88a265/packages/contracts/contracts/TroveManager.sol#L47-L48)
         - change to (0.1%, 3%)
