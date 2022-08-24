@@ -57,16 +57,16 @@ const UnsupportedMainnetFallback: React.FC = () => (
     </Heading>
 
     <Paragraph sx={{ mb: 3 }}>
-      Please change your network to Ropsten, Rinkeby, Kovan, Görli or Kiln.
+      Please change your network to BSC testnet.
     </Paragraph>
 
-    <Paragraph>
+    {/* <Paragraph>
       If you'd like to use the Liquity Protocol on mainnet, please pick a frontend{" "}
       <Link href="https://www.liquity.org/frontend">
         here <Icon name="external-link-alt" size="xs" />
       </Link>
       .
-    </Paragraph>
+    </Paragraph> */}
   </Flex>
 );
 
@@ -89,10 +89,9 @@ const App = () => {
       }}
     >
       <Heading sx={{ mb: 3 }}>
-        <Icon name="exclamation-triangle" /> Liquity is not yet deployed to{" "}
-        {chainId === 1 ? "mainnet" : "this network"}.
+        <Icon name="exclamation-triangle" /> Crangon is not yet deployed to this network.
       </Heading>
-      Please switch to Ropsten, Rinkeby, Kovan, Görli, Kiln or BSC testnet.
+      Please switch to BSC mainnet or BSC testnet.
     </Flex>
   );
 

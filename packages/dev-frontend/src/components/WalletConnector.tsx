@@ -1,16 +1,16 @@
 import React, { useEffect, useReducer } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { AbstractConnector } from "@web3-react/abstract-connector";
-import { Button, Text, Flex, Link, Box } from "theme-ui";
-
+import { Button, Text, Flex, Link, Box, Grid } from "theme-ui";
 import { injectedConnector } from "../connectors/injectedConnector";
 import { useAuthorizedConnection } from "../hooks/useAuthorizedConnection";
-
 import { RetryDialog } from "./RetryDialog";
 import { ConnectionConfirmationDialog } from "./ConnectionConfirmationDialog";
 import { MetaMaskIcon } from "./MetaMaskIcon";
 import { Icon } from "./Icon";
 import { Modal } from "./Modal";
+import { WalletConnectIcon } from "./WalletConnectIcon";
+import { walletconnectConnector } from "../connectors/walletconnectConnector";;
 
 interface MaybeHasMetaMask {
   ethereum?: {
@@ -118,24 +118,30 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({ children, load
   return (
     <>
       <Flex sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
+        <Grid gap={2} columns={[1]}>
         <Button
           onClick={() => {
             dispatch({ type: "startActivating", connector: injectedConnector });
             activate(injectedConnector);
           }}
         >
-          {isMetaMask ? (
-            <>
-              <MetaMaskIcon />
-              <Box sx={{ ml: 2 }}>Connect to MetaMask</Box>
-            </>
-          ) : (
-            <>
-              <Icon name="plug" size="lg" />
-              <Box sx={{ ml: 2 }}>Connect wallet</Box>
-            </>
-          )}
+          <>
+            <MetaMaskIcon />
+            <Box sx={{ ml: 2 }}>Connect with MetaMask</Box>
+          </>
         </Button>
+        <Button
+          onClick={() => {
+            dispatch({ type: "startActivating", connector: walletconnectConnector });
+            activate(walletconnectConnector);
+          }}
+        >
+          <>
+            <WalletConnectIcon />
+            <Box sx={{ ml: 2 }}>Connect with WalletConnect</Box>
+          </>
+        </Button>
+        </Grid>
       </Flex>
 
       {connectionState.type === "failed" && (
@@ -189,7 +195,7 @@ export const WalletConnector: React.FC<WalletConnectorProps> = ({ children, load
               activate(connectionState.connector);
             }}
           >
-            <Text>To use Liquity, you need to connect your Ethereum account.</Text>
+            <Text>To use Crangon, you need to connect your wallet.</Text>
           </RetryDialog>
         </Modal>
       )}
