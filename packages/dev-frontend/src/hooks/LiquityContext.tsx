@@ -13,6 +13,7 @@ import {
 } from "@liquity/lib-ethers";
 
 import { LiquityFrontendConfig, getConfig } from "../config";
+import { isReturnStatement } from "typescript";
 
 type LiquityContextValue = {
   config: LiquityFrontendConfig;
@@ -38,13 +39,16 @@ const wsParams = (network: string, infuraApiKey: string): [string, string] => {
     return ["wss://testnet-dex.binance.org/api/", network];
   }
 
-  return [
-    `wss://${network === "homestead" ? "mainnet" : network}.infura.io/ws/v3/${infuraApiKey}`,
-    network
-  ];
+  return ['', ''];
+
+  // return [
+  //   `wss://${network === "homestead" ? "mainnet" : network}.infura.io/ws/v3/${infuraApiKey}`,
+  //   network
+  // ];
 };
 
-const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli", "bnbt"];
+// const webSocketSupportedNetworks = ["homestead", "kovan", "rinkeby", "ropsten", "goerli", "bnbt"];
+const webSocketSupportedNetworks = ["bnbt"];
 
 const getClientVersion = async (provider: BaseProvider): Promise<string | undefined> => {
   try {
@@ -143,6 +147,10 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
 
   if (config.testnetOnly && chainId === 1) {
     return <>{unsupportedMainnetFallback}</>;
+  }
+
+  if (chainId && ![56, 97].includes(chainId)) {
+    return unsupportedNetworkFallback ? <>{unsupportedNetworkFallback(chainId)}</> : null;
   }
 
   if (!connection) {

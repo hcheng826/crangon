@@ -57,16 +57,16 @@ const UnsupportedMainnetFallback: React.FC = () => (
     </Heading>
 
     <Paragraph sx={{ mb: 3 }}>
-      Please change your network to Ropsten, Rinkeby, Kovan, Görli or Kiln.
+      Please change your network to BSC testnet.
     </Paragraph>
 
-    <Paragraph>
+    {/* <Paragraph>
       If you'd like to use the Liquity Protocol on mainnet, please pick a frontend{" "}
       <Link href="https://www.liquity.org/frontend">
         here <Icon name="external-link-alt" size="xs" />
       </Link>
       .
-    </Paragraph>
+    </Paragraph> */}
   </Flex>
 );
 
