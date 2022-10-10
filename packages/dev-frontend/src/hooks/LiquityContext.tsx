@@ -32,11 +32,11 @@ type LiquityProviderProps = {
 
 const wsParams = (network: string, infuraApiKey: string): [string, string] => {
   if (network === "bnb") {
-    return ["wss://dex.binance.org/api/", network];
+    return ["wss://dex.binance.org/api/ws/", network];
   }
 
   if (network === "bnbt") {
-    return ["wss://testnet-dex.binance.org/api/", network];
+    return ["wss://testnet-dex.binance.org/api/ws/", network];
   }
 
   return ['', ''];
@@ -149,7 +149,7 @@ export const LiquityProvider: React.FC<LiquityProviderProps> = ({
     return <>{unsupportedMainnetFallback}</>;
   }
 
-  if (chainId && ![56, 97].includes(chainId)) {
+  if (chainId && ![/*56, */97].includes(chainId)) { // TODO add mainnet back
     return unsupportedNetworkFallback ? <>{unsupportedNetworkFallback(chainId)}</> : null;
   }
 

@@ -91,7 +91,7 @@ const App = () => {
       <Heading sx={{ mb: 3 }}>
         <Icon name="exclamation-triangle" /> Crangon is not yet deployed to this network.
       </Heading>
-      Please switch to BSC mainnet or BSC testnet.
+      Please switch to BSC testnet.
     </Flex>
   );
 
