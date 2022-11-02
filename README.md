@@ -1,6 +1,9 @@
 # Crangon
-Crangon is a fork of Liquity on BSC.
+Crangon is 0 Interest, fully decentralized stablecoin on BNB chain, based on Liquity model
+Website: https://crangon-home.web.app/
+Pitch Deck: https://crangon-home.web.app/deck.pdf
 App URL: https://crangon.web.app
+
 ## Fork it on hardhat fork mode from BSC
 start local fork mode
 ```
